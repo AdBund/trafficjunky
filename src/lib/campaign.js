@@ -16,7 +16,23 @@ export default class Campaign {
   getById(id) {
     let url = `${this.baseUrl}/api/campaigns/${id}.json`;
     let p = request.get(url).query({api_key: this.apiKey}).end();
-    return p.then(res => res.body);
+    return p.then((res) => {
+      return res.body;
+    });
+  }
+
+  getStatsById(id, options = {}) {
+    options.campaignId = id;
+    options.api_key = this.apiKey;
+    let url = `${this.baseUrl}/api/campaigns/stats.json`;
+
+    let p = request.get(url)
+                   .query(options)
+                   .end();
+
+    return p.then((res) => {
+      return res.body;
+    });
   }
 
 }

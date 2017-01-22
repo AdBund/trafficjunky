@@ -16,25 +16,39 @@ describe('TrafficJunky', () => {
   })
 
   describe('Campaign', () => {
+    let campaignId;
+
     it ('should be able to get all campaigns', (done)=> {
       tj.campaign.getAll().then((campaigns)=> {
         expect(campaigns).to.be.a('array');
+        if(campaigns.length > 0) {
+          campaignId = campaigns[0].campaign_id;
+        }
         done()
       })
     })
 
     it ('should be able to get a campaign by its id', (done)=> {
-      tj.campaign.getAll().then((campaigns) => {
-        if(campaigns.length > 0) {
-          let _campaign = campaigns[0];
-          tj.campaign.getById(_campaign.campaign_id).then((campaign)=> {
-            expect(_campaign.campaign_id).to.equal(campaign.campaign_id);
+        if(campaignId) {
+          tj.campaign.getById(campaignId).then((campaign)=> {
+            expect(campaignId).to.equal(campaign.campaign_id);
+            console.log(campaign);
             done();
-          })
-        } else {
+        })
+      } else {
+        done();
+      }
+    })
+
+    it ('should be able to get a campaign stats by its id', (done)=> {
+      if(campaignId) {
+        tj.campaign.getStatsById(campaignId).then((stat) => {
+          console.log(stat);
           done();
-        }
-      })
+        })
+      } else {
+        done();
+      }
     })
   })
 

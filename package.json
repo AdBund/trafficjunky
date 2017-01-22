@@ -1,13 +1,12 @@
 {
   "name": "trafficjunky",
   "version": "1.0.0",
-  "description": "",
+  "description": "trafficjunky node api",
   "main": "dest/index.js",
   "scripts": {
     "test": "mocha --require babel-core/register --timeout 10000",
     "eslint": "eslint ./src",
     "build": "babel src --out-dir dest",
-    "flow": "flow",
     "watch:test": "nodemon --watch ./src --watch ./test --recursive --exec npm run test",
     "watch:build": "nodemon --watch ./src --recursive --exec npm run build",
     "prepublish": "npm run eslint && npm run test && npm run build"
