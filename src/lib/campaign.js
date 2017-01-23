@@ -1,7 +1,6 @@
-import request from '../utils/request';
 import Base from './base';
 
-export default class Campaign extends Base{
+export default class Campaign extends Base {
 
   getAll(options) {
     return this.request({
@@ -28,12 +27,12 @@ export default class Campaign extends Base{
     return this.request({
       path: '/api/campaigns/bids/stats.json',
       query: options
-    })
+    });
   }
 
   getTimeTargetsById(id) {
     return this.request({
       path: `/api/campaigns/${id}/timetargets.json`
-    })
+    });
   }
 }

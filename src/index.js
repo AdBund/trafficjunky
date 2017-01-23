@@ -4,7 +4,6 @@ import Campaign from './lib/campaign';
 import Member from './lib/member';
 import Spot from './lib/spot';
 
-
 export default class TrafficJunky {
   constructor(apiKey) {
     this.ad = new Ad(apiKey);

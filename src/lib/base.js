@@ -15,6 +15,6 @@ export default class Base {
                          .end();
     return promise.then((res) => {
       return res.body;
-    })
+    });
   }
 }

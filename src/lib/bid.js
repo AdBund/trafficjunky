@@ -1,4 +1,3 @@
-import request from '../utils/request';
 import Base from './base';
 
 export default class Bid extends Base {
@@ -17,20 +16,20 @@ export default class Bid extends Base {
 
   getByCampaignId(campaignId) {
     return this.request({
-      path: `/api/bids/${campaignId}.json`,
-    })
+      path: `/api/bids/${campaignId}.json`
+    });
   }
 
   getActiveByCampaignId(campaignId) {
     return this.request({
       path: `/api/bids/${campaignId}/active.json`
-    })
+    });
   }
 
   getCurrentBids(options) {
     return this.request({
       path: `/api/current_bids.json`,
       query: options
-    })
+    });
   }
 }
