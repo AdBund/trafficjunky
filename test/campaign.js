@@ -3,7 +3,7 @@ import TJ from '../src';
 
 let {apiKey} = process.env;
 
-describe('TrafficJunky', () => {
+describe('TrafficJunky Campaign', () => {
 
   it ('apiKey should exist', () => {
     expect(apiKey).to.be.a('string');
@@ -15,7 +15,7 @@ describe('TrafficJunky', () => {
     expect(tj.campaign).to.be.an('object');
   })
 
-  describe('Campaign', () => {
+  describe('functional', () => {
     let campaignId;
 
     it ('should be able to get all campaigns', (done)=> {
@@ -32,7 +32,6 @@ describe('TrafficJunky', () => {
         if(campaignId) {
           tj.campaign.getById(campaignId).then((campaign)=> {
             expect(campaignId).to.equal(campaign.campaign_id);
-            console.log(campaign);
             done();
         })
       } else {
@@ -43,7 +42,6 @@ describe('TrafficJunky', () => {
     it ('should be able to get a campaign stats by its id', (done)=> {
       if(campaignId) {
         tj.campaign.getStatsById(campaignId).then((stat) => {
-          console.log(stat);
           done();
         })
       } else {

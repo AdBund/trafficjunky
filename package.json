@@ -4,7 +4,7 @@
   "description": "trafficjunky node api",
   "main": "dest/index.js",
   "scripts": {
-    "test": "mocha --require babel-core/register --timeout 10000",
+    "test": "mocha --require babel-core/register --timeout 30000",
     "eslint": "eslint ./src",
     "build": "babel src --out-dir dest",
     "watch:test": "nodemon --watch ./src --watch ./test --recursive --exec npm run test",

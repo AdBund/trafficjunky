@@ -1,38 +1,39 @@
 import request from '../utils/request';
+import Base from './base';
 
-export default class Campaign {
-  constructor(apiKey, baseUrl) {
-    this.apiKey = apiKey;
-    this.baseUrl = baseUrl;
-  }
+export default class Campaign extends Base{
 
-  getAll() {
-    let path = '/api/campaigns.json';
-    let url = `${this.baseUrl}${path}`;
-    let p = request.get(url).query({api_key: this.apiKey}).end();
-    return p.then(res => res.body);
+  getAll(options) {
+    return this.request({
+      path: '/api/campaigns.json',
+      query: options
+    });
   }
 
   getById(id) {
-    let url = `${this.baseUrl}/api/campaigns/${id}.json`;
-    let p = request.get(url).query({api_key: this.apiKey}).end();
-    return p.then((res) => {
-      return res.body;
+    return this.request({
+      path: `/api/campaigns/${id}.json`
     });
   }
 
   getStatsById(id, options = {}) {
     options.campaignId = id;
-    options.api_key = this.apiKey;
-    let url = `${this.baseUrl}/api/campaigns/stats.json`;
-
-    let p = request.get(url)
-                   .query(options)
-                   .end();
-
-    return p.then((res) => {
-      return res.body;
+    return this.request({
+      path: '/api/campaigns/stats.json',
+      query: options
     });
   }
 
+  getBidsStats(options) {
+    return this.request({
+      path: '/api/campaigns/bids/stats.json',
+      query: options
+    })
+  }
+
+  getTimeTargetsById(id) {
+    return this.request({
+      path: `/api/campaigns/${id}/timetargets.json`
+    })
+  }
 }
